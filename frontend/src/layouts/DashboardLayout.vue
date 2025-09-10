@@ -17,7 +17,7 @@
           <template v-if="!authStore.isAdmin">
             <RouterLink
               to="/dashboard"
-              class="nav-link"
+              class="nav-link group"
               active-class="nav-link-active"
             >
               <HomeIcon class="h-5 w-5" />
@@ -25,7 +25,7 @@
             </RouterLink>
             <RouterLink
               to="/dashboard/settings"
-              class="nav-link"
+              class="nav-link group"
               active-class="nav-link-active"
             >
               <Cog6ToothIcon class="h-5 w-5" />
@@ -37,7 +37,7 @@
           <template v-else>
             <RouterLink
               to="/admin"
-              class="nav-link"
+              class="nav-link group"
               active-class="nav-link-active"
             >
               <ChartBarIcon class="h-5 w-5" />
@@ -45,7 +45,7 @@
             </RouterLink>
             <RouterLink
               to="/admin/users"
-              class="nav-link"
+              class="nav-link group"
               active-class="nav-link-active"
             >
               <UsersIcon class="h-5 w-5" />
@@ -53,7 +53,7 @@
             </RouterLink>
             <RouterLink
               to="/dashboard/settings"
-              class="nav-link"
+              class="nav-link group"
               active-class="nav-link-active"
             >
               <Cog6ToothIcon class="h-5 w-5" />
@@ -144,7 +144,7 @@ const logout = () => {
 
 <style scoped>
 .nav-link {
-  @apply flex items-center space-x-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 group rounded-md p-2 text-sm font-medium;
+  @apply flex items-center space-x-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md p-2 text-sm font-medium;
 }
 
 .nav-link-active {

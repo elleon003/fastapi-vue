@@ -57,6 +57,11 @@
             Use magic link instead
           </RouterLink>
         </div>
+        <div class="text-sm">
+          <RouterLink to="/auth/forgot-password" class="font-medium text-primary-600 hover:text-primary-500">
+            Forgot your password?
+          </RouterLink>
+        </div>
       </div>
 
       <div v-if="error" class="rounded-md bg-red-50 p-4">

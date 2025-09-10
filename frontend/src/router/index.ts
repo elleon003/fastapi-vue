@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/store/auth'
-import { USER_ROLES } from '@/constants'
+import { USER_ROLES, STORAGE_KEYS } from '@/constants'
 
 // Layouts
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
@@ -12,6 +12,9 @@ import Home from '@/views/Home.vue'
 import Login from '@/views/auth/Login.vue'
 import Register from '@/views/auth/Register.vue'
 import MagicLink from '@/views/auth/MagicLink.vue'
+import ForgotPassword from '@/views/auth/ForgotPassword.vue'
+import ResetPassword from '@/views/auth/ResetPassword.vue'
+import VerifyEmail from '@/views/auth/VerifyEmail.vue'
 import AuthCallback from '@/views/auth/AuthCallback.vue'
 import AuthError from '@/views/auth/AuthError.vue'
 import Dashboard from '@/views/dashboard/Dashboard.vue'
@@ -54,6 +57,23 @@ const router = createRouter({
           name: 'magic-link',
           component: MagicLink,
           meta: { guest: true },
+        },
+        {
+          path: 'forgot-password',
+          name: 'forgot-password',
+          component: ForgotPassword,
+          meta: { guest: true },
+        },
+        {
+          path: 'reset-password',
+          name: 'reset-password',
+          component: ResetPassword,
+          meta: { guest: true },
+        },
+        {
+          path: 'verify-email',
+          name: 'verify-email',
+          component: VerifyEmail,
         },
         {
           path: 'callback',
@@ -114,7 +134,7 @@ router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore()
   
   // Initialize auth store if not already done
-  if (!authStore.user && localStorage.getItem('access_token')) {
+  if (!authStore.user && localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN)) {
     authStore.initFromStorage()
   }
 

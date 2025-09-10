@@ -279,12 +279,21 @@ const handleSubmit = async () => {
   
   try {
     error.value = ''
-    await register({
+    
+    const registrationData: any = {
       email: form.email,
       password: form.password,
-      first_name: form.first_name || undefined,
-      last_name: form.last_name || undefined
-    })
+    }
+    
+    // Only include first_name and last_name if they have values
+    if (form.first_name) {
+      registrationData.first_name = form.first_name
+    }
+    if (form.last_name) {
+      registrationData.last_name = form.last_name  
+    }
+    
+    await register(registrationData)
   } catch (err: any) {
     console.error('Registration error:', err)
     error.value = err.response?.data?.detail || 'Registration failed. Please try again.'
